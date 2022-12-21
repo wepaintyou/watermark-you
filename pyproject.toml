@@ -1,0 +1,37 @@
+[tool.poetry]
+name        = "watermark-you"
+version     = "0.0.1"
+description = "Watermark your images"
+authors     = ["Unai Garay Maestre"]
+packages = [
+    { include = "watermark_you" },
+]
+
+[tool.poetry.dependencies]
+python                  = { version = ">= 3.8, <= 3.11" }
+Pillow                  = { version =  ">= 9.3.0"}
+GitPython               = { version = ">= 3.1.29" }
+
+# api
+fastapi                 = { version = ">= 0.88.0", optional = true}
+uvicorn                 = { version = ">= 0.20.0", optional = true}
+
+# dev
+black                   = { version = ">=22.10.0", optional = true}
+
+[tool.poetry.extras]
+
+dev = ["black"]
+
+api = ["fastapi", "uvicorn"]
+
+all = [
+    "watermark_you[api,dev]"
+]
+
+[build-system]
+requires        = [
+    "poetry-core>=1.0.0",
+    "setuptools"  # for pip install -e
+]
+build-backend   = "poetry.core.masonry.api"

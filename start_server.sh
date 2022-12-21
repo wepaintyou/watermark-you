@@ -1,0 +1,1 @@
+uvicorn watermark_you.api.server:app --port 5002 --host 0.0.0.0
