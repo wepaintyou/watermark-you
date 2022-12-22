@@ -17,6 +17,10 @@ fastapi                 = { version = ">= 0.88.0", optional = true }
 uvicorn                 = { version = ">= 0.20.0", optional = true }
 python-multipart        = { version = ">= 0.0.5", optional = true }
 
+# interface
+streamlit               = { version = ">= 1.16.0" }
+watchdog                = { version = ">= 2.2.0" }
+
 # dev
 black                   = { version = ">=22.10.0", optional = true }
 
