@@ -30,8 +30,10 @@ dev = ["black"]
 
 api = ["fastapi", "uvicorn"]
 
+# interface = ["streamlit,watchdog"]
+
 all = [
-    "watermark_you[api,dev]"
+    "watermark_you[api,dev,interface]"
 ]
 
 [build-system]

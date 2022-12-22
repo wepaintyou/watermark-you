@@ -1,1 +1,1 @@
-python3 -m streamlit run interface/app.py
+streamlit run interface/app.py
