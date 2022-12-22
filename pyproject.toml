@@ -8,16 +8,17 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python                  = { version = ">= 3.8, <= 3.11" }
+python                  = { version = ">= 3.9, <= 3.11" }
 Pillow                  = { version =  ">= 9.3.0"}
 GitPython               = { version = ">= 3.1.29" }
 
 # api
-fastapi                 = { version = ">= 0.88.0", optional = true}
-uvicorn                 = { version = ">= 0.20.0", optional = true}
+fastapi                 = { version = ">= 0.88.0", optional = true }
+uvicorn                 = { version = ">= 0.20.0", optional = true }
+python-multipart        = { version = ">= 0.0.5", optional = true }
 
 # dev
-black                   = { version = ">=22.10.0", optional = true}
+black                   = { version = ">=22.10.0", optional = true }
 
 [tool.poetry.extras]
 

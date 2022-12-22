@@ -1,37 +1,37 @@
 import os
-from typing import Tuple
+from typing import Optional, Tuple
 from PIL import Image
 
-from watermark_you.utils import ROOT_DIR
-
-DEFAULT_WATERMARK_IMAGE_PATH = os.path.join(
-    ROOT_DIR, "data/images/default_watermark.png"
+from watermark_you.utils import (
+    DEFAULT_WATERMARK_IMAGE_PATH,
+    DEFAULT_TEST_IMAGE_PATH,
 )
-DEFAULT_TEST_IMAGE_PATH = os.path.join(ROOT_DIR, "data/images/default_test_image.png")
 
 
 def watermark_with_transparency(
-    input_image_path: str,
-    output_image_path: str,
-    watermark_image_path: str,
-    position: Tuple[int, int],
+    base_image: Image,
+    watermark_image: Image,
+    output_image_path: Optional[str] = None,
+    position: Optional[Tuple[int, int]] = (150, 150),
 ):
-    base_image = Image.open(input_image_path)
-    watermark = Image.open(watermark_image_path)
-    watermark = watermark.resize(base_image.size)
+    watermark_image = watermark_image.resize(base_image.size)
     width, height = base_image.size
 
-    transparent = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    transparent.paste(base_image, (0, 0))
-    transparent.paste(watermark, position, mask=watermark)
-    transparent.convert("RGB").save(output_image_path)
+    final_image = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+    final_image.paste(base_image, (0, 0))
+    final_image.paste(watermark_image, position, mask=watermark_image)
+    final_image = final_image.convert("RGB")
+    if output_image_path is not None:
+        final_image.save(output_image_path)
+
+    return final_image
 
 
 if __name__ == "__main__":
 
     watermark_with_transparency(
-        input_image_path=DEFAULT_TEST_IMAGE_PATH,
+        base_image=Image.open(DEFAULT_TEST_IMAGE_PATH),
+        watermark_image=Image.open(DEFAULT_WATERMARK_IMAGE_PATH),
         output_image_path="image.png",
-        watermark_image_path=DEFAULT_WATERMARK_IMAGE_PATH,
         position=(150, 150),
     )
