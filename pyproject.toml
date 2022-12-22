@@ -5,6 +5,7 @@ description = "Watermark your images"
 authors     = ["Unai Garay Maestre"]
 packages = [
     { include = "watermark_you" },
+    { include = "interface" }
 ]
 
 [tool.poetry.dependencies]
